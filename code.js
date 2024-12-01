@@ -6,7 +6,6 @@ function hasCycle(graph) {
             minSpTree.add(edge)
             return true;
         }
-        return false;
     }
     return false;
 }
