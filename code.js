@@ -17,7 +17,8 @@ function hasCycle(graph) {
         return false;
     }
 
-    for (let node in graph) {
+    for (let node of Object.keys(graph)) {
+        node = parseInt(node);
         if (!visited.has(node)) {
             if (detectCycle(node, null, graph)) {
                 return true;
