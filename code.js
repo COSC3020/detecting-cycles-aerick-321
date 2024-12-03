@@ -11,13 +11,14 @@ function hasCycle(graph) {
 
     function detectCycle(current, parent, graph, visited){
         visited.add(current);
-        
+        let stack = new Set();
         for (let next in Object.keys(graph[current])) {
             if(!visited.has(next)){
-                
+                stack.push(current);
                 if (detectCycle(next, current, graph, visited)) {
                 return true; 
                 }
+                stack.pop();
                 
             } else if (next !== parent) {
             return true;
@@ -25,6 +26,7 @@ function hasCycle(graph) {
         }
         return false;
     }
+    
     return false;
 }
 
