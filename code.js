@@ -12,7 +12,7 @@ function hasCycle(graph) {
     function detectCycle(current, parent, graph, visited){
         visited.add(current);
         
-        for (let next in graph[current]) {
+        for (let next in Object.keys(graph[current])) {
             if(!visited.has(next)){
                 
                 if (detectCycle(next, current, graph, visited)) {
