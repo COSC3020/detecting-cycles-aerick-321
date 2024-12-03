@@ -3,30 +3,30 @@ function hasCycle(graph) {
 
     for (let node in graph) {
         if (!visited.has(node)) {
-            if (detectCycle(node, null, graph, visited)) {
+            if (detectCycle(node, null, graph)) {
                 return true; 
             }
         }
     }
-
-    function detectCycle(current, parent, graph, visited){
+    return false;
+    let stack = new Set();
+    
+    function detectCycle(current, parent, graph){
         visited.add(current);
-        let stack = new Set();
-        for (let next in Object.keys(graph[current])) {
+        stack.add(current);
+    
+        for (let next in graph[current]) {
             if(!visited.has(next)){
                 stack.push(current);
-                if (detectCycle(next, current, graph, visited)) {
+                if (detectCycle(next, current, graph) {
                 return true; 
                 }
-                stack.pop();
                 
-            } else if (next !== parent) {
+            } else if (stack.has(next)) {
             return true;
             }
         }
         return false;
     }
-    
-    return false;
 }
 
